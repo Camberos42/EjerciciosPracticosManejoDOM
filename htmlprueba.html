@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onload="relojAlarma()">
+    <link rel="stylesheet" href="css/styleJonCopia.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <title>Ejercicios DOM</title>
+
+    <section id="section1" class="section">
+        <h2>Seccion 1</h2>
+        <h3>Reloj Digital y Alarma Sonora</h3>
+        <div class="reloj"></div>
+        <audio class="alarma" src="" autoplay="false">
+            Your browser does not support the <code>audio</code> element.
+        </audio>
+        <input id="IniciarRelojBtn" type="button" value="Iniciar Reloj">
+        <input id="DetenerRelojBtn" type="button" value="Detener Reloj">
+        <input id="IniciarAlarmaBtn" type="button" value="Iniciar Alarma">
+        <input id="DetenerAlarmaBtn" type="button" value="Detener Alarma">
+    </section>
+    <section id="section2" class="section">
+        <h2>Seccion 2</h2>
+        <article class="contenedorSeccion2" onkeydown='getKeyAndMove(event)'>
+            <div class="circulo"></div>
+        </article>
+    </section>
+    <section id="section3" class="section">
+        <h2>Countdown</h2>
+        <div class="countdown"></div>
+    </section>
+
+</body>
+
+<script>
+    const d = document,
+        $IniciarRelojBtn = d.querySelector("#IniciarRelojBtn "),
+        $IniciarAlarmaBtn = d.querySelector("#IniciarAlarmaBtn "),
+        $body = d.querySelector("body "),
+        $alarma = d.querySelector('.alarma'),
+        $reloj = d.querySelector('.reloj'); // Get a reference to the element we want to update
+    let message; //Mensaje que se escribira (opcional)
+
+    function relojAlarma() {
+        let today = new Date(),
+            hr = today.getHours(),
+            min = today.getMinutes(),
+            sec = today.getSeconds();
+        min = checkTime(min);
+        sec = checkTime(sec);
+
+        $reloj.innerHTML = `${hr}: ${min}: ${sec}`;
+        $reloj.style.margin = "1rem ";
+        $reloj.style.setProperty("font-size ", "2rem ");
+        //$body.setAttribute("onload ", "relojAlarma() "
+        $reloj.style.setProperty("display ", "block ");
+        $IniciarRelojBtn.disabled = true;
+        $body.setAttribute("onload ", "relojAlarma() ");
+
+        //Agrega un 0 en caso de que num < 10
+        function checkTime(i) {
+            if (i < 10) i = "0 " + i;
+            return i;
+        }
+        let time = setTimeout(function() {
+            relojAlarma()
+        }, 500);
+    }
+
+    /////////////////////////////////////////////////Section 2/////////////////////////////////////////////////
+
+    //init object globally
+    var circulo = null;
+
+    function init() {
+        circulo = document.querySelector(".circulo");
+        console.log(circulo);
+        circulo.style.position = 'relative';
+        circulo.style.left = '0px';
+        circulo.style.top = '0px';
+    }
+
+    function getKeyAndMove(e) {
+        var key_code = e.which || e.keyCode;
+        console.log(key_code);
+        switch (key_code) {
+            case 37: //left arrow key
+                moveLeft();
+                break;
+            case 38: //Up arrow key
+                moveUp();
+                break;
+            case 39: //right arrow key
+                moveRight();
+                break;
+            case 40: //down arrow key
+                moveDown();
+                break;
+        }
+    }
+
+    function moveLeft() {
+        circulo.style.left = parseInt(circulo.style.left) - 5 + 'px';
+    }
+
+    function moveUp() {
+        circulo.style.top = parseInt(circulo.style.top) - 5 + 'px';
+    }
+
+    function moveRight() {
+        circulo.style.left = parseInt(circulo.style.left) + 5 + 'px';
+    }
+
+    function moveDown() {
+        circulo.style.top = parseInt(circulo.style.top) + 5 + 'px';
+    }
+    window.onload = init;
+
+
+    /////////////////////////////////////////////////Section 3/////////////////////////////////////////////////
+    Countdown();
+
+    function Countdown() {
+        const $stage = d.querySelector(".countdown");
+        let day1 = new Date();
+        let año1 = day1.getFullYear(),
+            mes1 = day1.getMonth(),
+            dias1 = day1.getDate(),
+            hrs1 = day1.getHours(),
+            mins1 = day1.getMinutes(),
+            segs1 = day1.getSeconds(),
+            utc = day1.toDateString(),
+            day2 = new Date(2021, 03, 14),
+            año2 = day2.getFullYear(),
+            mes2 = day2.getMonth(),
+            dias2 = day2.getDate(),
+            hrs2 = day2.getHours(),
+            mins2 = day2.getMinutes(),
+            segs2 = day2.getSeconds(),
+            difAños = 0,
+            difMeses = 0,
+            difDias = 0,
+            difHrs = 0,
+            difMins = 0,
+            difSegs = 0,
+            stamp1 = day1.getTime(),
+            stamp2 = day2.getTime();
+        /*
+        $stage.innerHTML = `<h3>Fecha 1: ${day1}</h3>`;
+        $stage.innerHTML += `<h3>Año Fecha 1: ${año1}</h3>`;
+        $stage.innerHTML += `<h3>Mes Fecha 1: ${mes1}</h3>`;
+        $stage.innerHTML += `<h3>Dia Fecha 1: ${dias1}</h3>`;
+        $stage.innerHTML += `<h3>${utc}</h3>`;
+        $stage.innerHTML += `<h3>Fecha 2: ${day2}</h3>`;
+        $stage.innerHTML += `<h3>Año Fecha 2: ${año2}</h3>`;
+        $stage.innerHTML += `<h3>Mes Fecha 2: ${mes2}</h3>`;
+        $stage.innerHTML += `<h3>Diferencia: ${day2-day1}</h3>`;
+        $stage.innerHTML += `<h3>Diferencia de años: ${año2-año1}</h3>`;
+        $stage.innerHTML += `<h3>Diferencia de meses: ${mes2-mes1}</h3>`;
+        console.log(mins1, mins2);
+        */
+        //Time Stamp
+        $stage.innerHTML += `<h3>TimeStamp dia 1: ${stamp1}</h3>`;
+        $stage.innerHTML += `<h3>TimeStamp dia 2: ${stamp2}</h3>`;
+        $stage.innerHTML = `<h3>Fecha 1: ${day1.toDateString()}</h3>`;
+        $stage.innerHTML += `<h3>Fecha 2: ${day2.toDateString()}</h3>`;
+        let difMili = stamp2 - stamp1,
+            difsegsTimeS = Math.floor(difMili / 1000),
+            difminTimeS = Math.floor(difsegsTimeS / 60),
+            difhrsTimeS = Math.floor(difminTimeS / 60),
+            difdiasTimeS = Math.floor(difhrsTimeS / 24);
+        //difdiasTimeS = Math.floor(stamp2 - stamp1 / (24*60*60*1000); //Alternativa mas rapida (stamp1 = fecha1)
+
+
+
+        $stage.innerHTML += `<h3>Diferencia de milisegs timestamp: ${difMili}</h3>`;
+        $stage.innerHTML += `<h3>Diferencia de segs timestamp: ${difsegsTimeS}</h3>`;
+        $stage.innerHTML += `<h3>Diferencia de mins timestamp: ${difminTimeS}</h3>`;
+        $stage.innerHTML += `<h3>Diferencia de horas timestamp: ${difhrsTimeS}</h3>`;
+        $stage.innerHTML += `<h3>Diferencia de dias timestamp: ${difdiasTimeS}</h3>`;
+
+
+
+        if (año2 >= año1) {
+            difAños = año2 - año1;
+        }
+
+        if (mes2 >= mes1) difMeses = mes2 - mes1;
+        else {
+            difAños -= 1;
+            difMeses = Math.abs(mes2 - mes1);
+        }
+
+        if (dias2 >= dias1) difDias = dias2 - dias1;
+        else {
+            difMeses -= 1;
+            difDias = Math.abs(dias2 - dias1);
+        }
+
+        if (hrs2 >= hrs1) difhrs = hrs2 - hrs1;
+        else {
+            if (hrs1 === 0) hrs1 = 24;
+            if (hrs2 === 0) hrs2 = 24;
+            difDias -= 1;
+            difhrs = Math.abs(hrs2 - hrs1);
+        }
+
+        if (mins2 >= mins1) difmins = mins2 - mins1;
+        else {
+            if (mins1 === 0) mins1 = 60;
+            if (mins2 === 0) mins2 = 60;
+            difHrs -= 1;
+            difmins = Math.abs(mins2 - mins1);
+        }
+
+        if (segs2 >= segs1) difSegs = segs2 - segs1;
+        else {
+            if (segs1 === 0) segs1 = 60;
+            if (segs2 === 0) segs2 = 60;
+            difmins -= 1;
+            difSegs = Math.abs(segs2 - segs1);
+        }
+
+        $stage.innerHTML += `<h2>${difAños} años ${difMeses} meses ${difDias} dias ${difhrs} horas ${difmins} minutos, ${difSegs} segundos.</h2>`;
+        $stage.innerHTML += `<h2>${difdiasTimeS} dias ${difhrs} horas ${difmins} minutos, ${difSegs} segundos.</h2>`;
+
+        $stage.innerHTML += `<h3></h3>`
+
+
+
+    }
+</script>
+
+</html>

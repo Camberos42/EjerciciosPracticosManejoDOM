@@ -1,0 +1,241 @@
+/* **********     Reset CSS     ********** */
+
+:root {
+    --main-font: sans-serif;
+    --font-size: 16px;
+    --main-color: #f7df1e;
+    --second-color: #222;
+    --main-modal-color: rgba(247, 222, 30, 0.85);
+    --second-modal-color: rgba(34, 34, 34, 0.85);
+    --container-width: 1200px;
+}
+
+html {
+    box-sizing: border-box;
+    font-family: var(--main-font);
+    font-size: var(--font-size);
+    /*Al navegar entre las secciones se vea una pequeña transicion*/
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* **********     menu-hamburguesa     ********** */
+
+.header {
+    position: sticky;
+    top: 0;
+    padding: 1rem;
+    background-color: var(--main-color);
+    color: var(--second-color);
+}
+
+.header h1 {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section {
+    padding: 2rem;
+    padding-top: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: var(--container-width);
+    /*Ocupe el 100% de la pantalla*/
+    min-height: 100vh;
+    text-align: center;
+}
+
+.panel {
+    position: fixed;
+    /*Que este encima de todo menos del boton*/
+    z-index: 998;
+    width: 100%;
+    /*Estirar todos los elem al limite del margen de cada lado (hasta arriba, abajo derecha e izquierda) 
+    abarcando el 100% de la pantalla*/
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--second-modal-color);
+    opacity: 0;
+    /*Para eliminar la interactividad ya que al pasar por encima aparece el pointer de los enlaces*/
+    visibility: hidden;
+    transition: transform 0.3s ease, opacity 1s ease;
+    /* De arriba */
+    transform: translate(0, -100%);
+    /* De abajo */
+    /*transform: translate(0, 100%);
+    /* De la derecha */
+    /*transform: translate(100%, 0);
+    /* De la izquierda */
+    /*transform: translate(-100%, 0);*/
+    /*
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    
+       
+    */
+}
+
+
+/*Se agrega una clase para que aparezca el panel*/
+
+.panel.is-active {
+    transform: translate(0, 0);
+    opacity: 1;
+    /*Mostrar el panel ya que esta en hiddden */
+    visibility: visible;
+}
+
+.panel-btn {
+    position: fixed;
+    /*z-index alto para mandar hasta enfrente (por encima de los demas elementos)*/
+    z-index: 999;
+    /*colocarlo hasta abajo de la pantalla*/
+    bottom: 1vh;
+    /*Colocarlo hasta la derecha de la pantalla*/
+    right: 1vw;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    padding: 0;
+    /*Para que se centren los spans*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+    outline: 0;
+    border: 0;
+}
+
+
+/*Boton del scroll*/
+
+.scroll-btn {
+    position: fixed;
+    /*z-index alto para mandar hasta enfrente (por encima de los demas elementos)*/
+    z-index: 999;
+    /*colocarlo hasta abajo de la pantalla*/
+    bottom: 1vh;
+    /*Colocarlo hasta la derecha de la pantalla*/
+    right: 6vw;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    padding: 0;
+    opacity: 0;
+    /* also add a translate effect */
+    transform: translateY(100px);
+    /* and a transition */
+    transition: all 0.3s ease;
+    background-color: var(--main-color);
+    right: 6vw;
+}
+
+.mostrarBtnScroll {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.scroll-btn:hover {
+    background-color: var(--second-color);
+    color: var(--main-color);
+}
+
+
+/*Boton del dark mode*/
+
+.dark-theme-btn {
+    position: fixed;
+    /*z-index alto para mandar hasta enfrente (por encima de los demas elementos)*/
+    z-index: 999;
+    /*colocarlo hasta abajo de la pantalla*/
+    bottom: 1vh;
+    /*Colocarlo hasta la izquierda de la pantalla*/
+    left: 1vh;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    padding: 0;
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    background-color: var(--main-color);
+    font-size: 2rem;
+}
+
+.menu {
+    /*Hereda el width del panel*/
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+.menu a {
+    padding: 2rem;
+    width: inherit;
+    display: block;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--main-color);
+    transition: all 0.3s ease;
+}
+
+.menu a:hover {
+    font-weight: bold;
+    color: var(--second-color);
+    background-color: var(--main-modal-color);
+}
+
+
+/*Seccion 2*/
+
+.contenedorSeccion2 {
+    background-color: var(--second-color);
+    width: 100%;
+    height: 20rem;
+    z-index: 997;
+    display: flex;
+}
+
+.circulo {
+    margin: auto;
+    width: 5rem;
+    height: 5rem;
+    background-color: var(--main-color);
+    border-radius: 50%;
+    display: inline-block;
+    z-index: 998;
+}
+
+
+/*Dark mode*/
+
+.dark-mode {
+    background-color: var(--second-color);
+    color: var(--main-color);
+}
+
+
+/*Mapa*/
+
+.mapa {
+    height: 100%;
+}

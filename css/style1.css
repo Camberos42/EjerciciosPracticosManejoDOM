@@ -1,0 +1,29 @@
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+h1 {
+    text-align: center;
+    background-color: rgb(255, 255, 15);
+    padding: 0.5em 0;
+}
+
+#menu-hamburguesa {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+i {
+    font-size: 1.5em;
+}
