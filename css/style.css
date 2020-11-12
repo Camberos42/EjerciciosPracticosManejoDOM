@@ -234,8 +234,20 @@ img {
 }
 
 
-/*Mapa*/
+/*Mapa (No funciono)*/
 
 .mapa {
     height: 100%;
+}
+
+
+/*Responsive Tester (Seccion 5)*/
+
+.seccionResponsiveTest {
+    text-align: center;
+    margin: auto;
+}
+
+.seccionResponsiveTest input[type="text"] {
+    margin: 0.5rem;
 }
