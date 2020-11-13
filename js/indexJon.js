@@ -6,6 +6,7 @@ import { displayBtnScroll } from "./dom/BotonScroll.js";
 import { temaDark } from "./dom/TemaDark.js";
 import { responsiveDesign } from "./dom/ResponsiveDesign.js";
 import { responsiveTester } from "./dom/ResponsiveTester.js";
+import { estadoRed } from "./dom/EstadoRed.js";
 
 
 //Se aplica la propagacion de eventos (se ejecuta el evento DOMContentLOaded y el evento del click de la hamburguerMenu)
@@ -21,6 +22,7 @@ d.addEventListener("DOMContentLoaded", (e) => {
     Countdown(".countdown", "2021, 11, 19", "FELICIDADEEEES!"); //Mi funcion (si funciono)
 
     responsiveTester("url", "ancho", "alto", "btnProbar", "btnCerrar");
+    estadoRed("deteccion-red");
 
 });
 
