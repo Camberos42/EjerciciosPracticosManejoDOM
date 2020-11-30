@@ -80,14 +80,13 @@ img {
     /*transform: translate(100%, 0);
     /* De la izquierda */
     /*transform: translate(-100%, 0);*/
+    /*Poder hacer scroll en el menu*/
+    overflow-y: auto;
     /*
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow-y: auto;
-    
-       
     */
 }
 
@@ -250,4 +249,294 @@ img {
 
 .seccionResponsiveTest input[type="text"] {
     margin: 0.5rem;
+}
+
+
+/* **********     Network Status     ********** */
+
+.online,
+.offline {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    background-color: #1b5e20;
+    color: #fff;
+}
+
+.offline {
+    background-color: #b71c1c;
+}
+
+
+/* Search Filters */
+
+.cards {
+    display: grid;
+    /* con esto se puede hacer responsive design sin mq (con funcion minmax) */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.card {
+    background-color: var(--second-color);
+    color: var(--main-color);
+    transition: all 0.3s ease-out;
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+}
+
+.card-figaction {
+    padding: 1rem;
+}
+
+
+/* Discriminar las figures al hacer la busqueda (ocultarlos) */
+
+.filter {
+    /* display: none; */
+    visibility: hidden;
+    opacity: 0;
+    order: 1;
+}
+
+
+/* **********     Responsive Slider     ********** */
+
+.slider {
+    position: relative;
+    width: 80%;
+    margin: 1rem auto;
+    /* border: thin solid black; */
+    text-align: center;
+}
+
+.slider-slides {
+    position: relative;
+    height: 400px;
+}
+
+
+/* Colocar una Imagen encima de la otra (ocultarlas) */
+
+.slider-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease;
+}
+
+.slider-slide img {
+    height: inherit;
+    width: inherit;
+    /* Para que la imagen no se deforme y cubra toda la imagen */
+    object-fit: cover;
+    /* Para mover la imagen (x,y) */
+    object-position: 50% 50%;
+}
+
+
+/* Clase para mostrar la imagen activa */
+
+.slider-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slider-btns {
+    position: absolute;
+    /* Se agrega el width para que funcione el space-between */
+    width: 100%;
+    top: calc(50% - 2rem);
+    display: flex;
+    justify-content: space-between;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.slider a {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: thin solid #000;
+    text-decoration: none;
+    background-color: #fff;
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+.slider a:hover {
+    color: #4d4d4d;
+}
+
+
+/***********     ScrollSpy     ***********/
+
+@media screen and (min-width: 1024px) {
+    /* Nuevo maquetado con Grid */
+    body {
+        display: grid;
+        grid-template-columns: 80% 20%;
+        grid-template-rows: 4rem auto;
+        grid-template-areas: "header header" "main panel";
+    }
+    main {
+        grid-area: main;
+    }
+    .header {
+        grid-area: header;
+    }
+    .panel {
+        grid-area: panel;
+        align-self: start;
+        position: sticky;
+        top: 4rem;
+        justify-content: flex-start;
+        background-color: var(--second-color);
+        transform: translate(0, 0);
+        opacity: 1;
+        visibility: visible;
+        overflow-y: auto;
+        padding-right: 1rem;
+    }
+    .panel-btn {
+        display: none;
+    }
+    .menu {
+        justify-content: start;
+        text-align: right;
+    }
+    .menu a {
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+    /* Para que se vaya cambiando al hacer scroll */
+    .menu a:hover,
+    .menu a.active {
+        color: var(--second-color);
+        background-color: var(--main-color);
+    }
+    /* Mover el boton de scroll */
+    .scroll-top-btn {
+        right: initial;
+        left: calc(4.25rem + 1vw);
+    }
+}
+
+.contact-form {
+    --form-ok-color: #4caf50;
+    --form-error-color: #f44336;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+
+/* **********     ContactForm Validations     ********** */
+
+.contact-form>* {
+    padding: 0.5rem;
+    margin: 1rem auto;
+    display: block;
+    width: 100%;
+}
+
+
+/* Para restringir que se pueda alterar el tamaño del textarea*/
+
+.contact-form textarea {
+    resize: none;
+}
+
+.contact-form legend,
+.contact-form-response {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* Estandarizar el estilo de letra a los elementos del formulario */
+
+.contact-form input,
+.contact-form textarea {
+    font-size: 1rem;
+    font-family: sans-serif;
+}
+
+.contact-form input[type="submit"] {
+    width: 50%;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* A todos los selectores que tengan la propiedad placeholder aplicarle un color de letra*/
+
+.contact-form *::placeholder {
+    color: #000;
+}
+
+
+/*VALIDACIONES
+Todos los elementos que sean hijos va a validar que un elemento tenga required, sea valida y este dentro del formulario contacto */
+
+.contact-form [required]:valid {
+    border: thin solid var(--form-ok-color);
+}
+
+.contact-form [required]:invalid {
+    border: thin solid var(--form-error-color);
+}
+
+
+/*MENSAJES DE ERROR
+-1rem es para que aparezca justo pegado del input*/
+
+.contact-form-error {
+    margin-top: -1rem;
+    font-size: 80%;
+    background-color: var(--form-error-color);
+    color: #fff;
+    transition: all 800ms ease;
+}
+
+
+/*MOSTRAR MENSAJE DE ERROR
+Se mostrara cuando se le agregue la clase active*/
+
+.contact-form-error.is-active {
+    display: block;
+    animation: show-message 1s 1 normal 0s ease-out both;
+}
+
+
+/*OCULTAR MENSAJE DE ERROR*/
+
+.none {
+    display: none;
+}
+
+
+/* ANIMACION */
+
+@keyframes show-message {
+    0% {
+        visibility: hidden;
+        opacity: 0;
+    }
+    100% {
+        visibility: visible;
+        opacity: 1;
+    }
 }

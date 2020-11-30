@@ -27,16 +27,20 @@
 
     <aside class="panel">
         <nav class="menu">
-            <a href="#section1">Reloj Digital y Alarma Sonora</a>
-            <a href="#section2">Eventos del teclado</a>
-            <a href="#section3">Countdown</a>
-            <a href="#section4">Responsive Design</a>
-            <a href="#section5">Responsive Tester</a>
-            <a href="#section6">Deteccion de la conexion</a>
-            <a href="#section7">Seccion 7</a>
-            <a href="#section8">Seccion 8</a>
-            <a href="#section9">Seccion 9</a>
-            <a href="#section10">Seccion 10</a>
+            <a href="#section1" data-scroll-spy>Reloj Digital y Alarma Sonora</a>
+            <a href="#section2" data-scroll-spy>Eventos del teclado</a>
+            <a href="#section3" data-scroll-spy>Countdown</a>
+            <a href="#section4" data-scroll-spy>Responsive Design</a>
+            <a href="#section5" data-scroll-spy>Responsive Tester</a>
+            <a href="#section6" data-scroll-spy>Deteccion de la conexion</a>
+            <a href="#section7" data-scroll-spy>Deteccion de dispositivos (User Agent)</a>
+            <a href="#section8" data-scroll-spy>Deteccion de camara</a>
+            <a href="#section9" data-scroll-spy>Geolocalizacion</a>
+            <a href="#section10" data-scroll-spy>Filtros de Busqueda</a>
+            <a href="#section11" data-scroll-spy>Sorteo Digital</a>
+            <a href="#section12" data-scroll-spy>Responsive slider</a>
+            <a href="#section13" data-scroll-spy>Video Inteligente</a>
+            <a href="#section14" data-scroll-spy>Validacion de formulario</a>
         </nav>
     </aside>
 
@@ -83,9 +87,137 @@
                 <input id="btnCerrar" type="submit" value="cerrar">
             </div>
         </section>
-        <section id="section6" class="section">
+        <section id="section6" class="section" data-scroll-spy>
+            <h2>Deteccion de dispositivos<br>(User Agent)</h2>
+            <div id="user-device"></div>
+        </section>
+        <section id="section7" class="section">
             <h2>Deteccion de la red</h2>
             <div id="deteccion-red"></div>
+        </section>
+        <section id="section8" class="section">
+            <h2>Deteccion de la camara</h2>
+            <video id="video" autoplay>Video aqui</video>
+        </section>
+        <section id="section9" class="section" data-scroll-spy>
+            <h2>Geolocalizacion</h2>
+            <div id="geolocation"></div>
+        </section>
+
+        <section id="section10" class="section" data-scroll-spy>
+            <h2>Filtros de Busqueda</h2>
+            <input type="search" placeholder="Buscar.." class="card-filter">
+            <article class="cards">
+                <figure class="card">
+                    <img src="https://placeimg.com/200/200/nature" alt="Nature">
+                    <figcaption>Nature</figcaption>
+                </figure>
+                <figure class="card">
+                    <img src="https://placeimg.com/200/200/any" alt="Any">
+                    <figcaption>Any</figcaption>
+                </figure>
+                <figure class="card">
+                    <img src="https://placeimg.com/200/200/tech" alt="Tech">
+                    <figcaption>Tech</figcaption>
+                </figure>
+                <figure class="card">
+                    <img src="https://placeimg.com/200/200/animals" alt="Animals">
+                    <figcaption>Animals</figcaption>
+                </figure>
+                <figure class="card">
+                    <img src="https://placeimg.com/200/200/people" alt="People">
+                    <figcaption>People</figcaption>
+                </figure>
+                <figure class="card">
+                    <img src="https://placeimg.com/200/200/arch" alt="Architecture">
+                    <figcaption>Architecture</figcaption>
+                </figure>
+            </article>
+        </section>
+
+        <section id="section11" class="section" data-scroll-spy>
+            <h2>Sorteo Digital</h2>
+            <ul id="players">
+                <li class="player">Javascript</li>
+                <li class="player">PHP</li>
+                <li class="player">JAVA</li>
+                <li class="player">C</li>
+                <li class="player">Python</li>
+                <li class="player">Ruby</li>
+                <li class="player">Go</li>
+                <li class="player">Visual Basic</li>
+                <li class="player">Rust</li>
+                <li class="player">Perl</li>
+            </ul>
+            <button id="winner-btn">Obtener Ganador</button>
+        </section>
+
+        <section id="section12" class="section" data-scroll-spy>
+            <h2>Responsive Slider</h2>
+            <div class="slider">
+                <div class="slider-slides">
+                    <!-- Solo una clase tendra la clase active -->
+                    <div class="slider-slide active">
+                        <img src="https://placeimg.com/400/400/animals" alt="animals">
+                    </div>
+                    <div class="slider-slide">
+                        <h4>2</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, quidem voluptate aperiam quasi animi, ex earum iure tenetur ad corporis saepe exercitationem ab doloribus tempore consequuntur. Minus nostrum blanditiis dolore.</p>
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://placeimg.com/400/400/nature" alt="nature"></div>
+                    <div class="slider-slide">
+                        <h4>4</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus perferendis totam enim quam vel veniam impedit rem quod laboriosam, maxime illo asperiores, illum eius. Nam libero quas ipsum et esse.</p>
+                    </div>
+                </div>
+                <div class="slider-btns">
+                    <a class="prev" href="#">&laquo;</a>
+                    <a class="next" href="#">&raquo;</a></div>
+            </div>
+        </section>
+        <section id="section13" class="section" data-scroll-spy>
+            <h2>Video Inteligente</h2>
+            <video src="/assets/coverr-video1.mp4" width="70%" muted controls loop data-smart-video></video>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <video src="/assets/coverr-video1.mp4" width="70%" muted controls loop data-smart-video></video>
+        </section>
+        <section id="section14" class="section" data-scroll-spy>
+            <h2>Validacion de formulario</h2>
+            <form class="contact-form">
+                <legend>Envianos tus comentarios</legend>
+                <input type="text" placeholder="Escribe tu nombre" name="nombre" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" title="nombre solo acepta letras y espacios en blanco" required>
+                <input type="email" placeholder="Escribe tu Email" name="email" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" title="Email incorrecto" required>
+                <input type="text" placeholder="Asunto a tratar" name="subject" title="El asunto es requerido" required>
+                <textarea placeholder="Escribe tus comentarios" cols="50" rows="5" name="comments" data-pattern="^.{1,255}$" title="Tu comentario no debe de exceder los 255 caracteres" required></textarea>
+                <input type="submit" value="Enviar">
+
+                <div class="contact-form-loader none">
+                    <img src="assets/tail-spin.svg" alt="Cargando">
+                </div>
+                <div class="contact-form-response none">
+                    <p>Los datos han sido enviados</p>
+                </div>
+            </form>
         </section>
     </main>
 
